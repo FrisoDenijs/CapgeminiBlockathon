@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Runtime.CompilerServices;
+using blockathon.smartcontract.interfaces;
+using blockathon.smartcontract;
 
 [assembly: InternalsVisibleTo("blockathon.rdw.oracle.service.test")]
 
@@ -27,6 +29,8 @@ namespace blockathon.rdw.oracle.service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<ISmartContract, SmartContract>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\blockathon.shared\blockathon.shared.csproj" />
     <ProjectReference Include="..\blockathon.smartcontract.interfaces\blockathon.smartcontract.interfaces.csproj" />
+    <ProjectReference Include="..\blockathon.smartcontract\blockathon.smartcontract.csproj" />
   </ItemGroup>
 
 </Project>
