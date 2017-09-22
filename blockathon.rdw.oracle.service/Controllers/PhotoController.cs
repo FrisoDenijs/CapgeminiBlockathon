@@ -23,10 +23,10 @@ namespace blockathon.rdw.oracle.service.Controllers
         }
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        [HttpGet("{photodata}")]
-        public IActionResult AnalyzePhoto(string url)
+        [HttpPost]
+        public IActionResult AnalyzePhoto([FromBody]string body)
         {
-            DoAnalyzePhoto(url); // Do not wait
+            DoAnalyzePhoto(body); // Do not wait
             return new AcceptedResult();
         }
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
@@ -36,7 +36,7 @@ namespace blockathon.rdw.oracle.service.Controllers
             using (var client = new HttpClient())
             {
                 var sUrl = $"{Constants.OpenALPR}&image_url={url}";
-                var result = await client.PostAsync(sUrl, new StringContent("", Encoding.Default, "application/json"));
+                var result = await client.PostAsync(sUrl, null);
                 if (!result.IsSuccessStatusCode)
                 {
                     _logger.LogCritical($"Error analyzing image {url}");
