@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blockathon.shared", "blocka
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blockathon.smartcontract", "blockathon.smartcontract\blockathon.smartcontract.csproj", "{CF28CF81-E8F2-486F-97A4-12BAF738676A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAlprApi", "OpenAlprApi\OpenAlprApi.csproj", "{28674E2C-C26D-4E6D-A26C-EFB062E9348E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CF28CF81-E8F2-486F-97A4-12BAF738676A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF28CF81-E8F2-486F-97A4-12BAF738676A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF28CF81-E8F2-486F-97A4-12BAF738676A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28674E2C-C26D-4E6D-A26C-EFB062E9348E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28674E2C-C26D-4E6D-A26C-EFB062E9348E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28674E2C-C26D-4E6D-A26C-EFB062E9348E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28674E2C-C26D-4E6D-A26C-EFB062E9348E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

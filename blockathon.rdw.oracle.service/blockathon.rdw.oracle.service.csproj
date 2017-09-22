@@ -29,6 +29,7 @@
     <ProjectReference Include="..\blockathon.shared\blockathon.shared.csproj" />
     <ProjectReference Include="..\blockathon.smartcontract.interfaces\blockathon.smartcontract.interfaces.csproj" />
     <ProjectReference Include="..\blockathon.smartcontract\blockathon.smartcontract.csproj" />
+    <ProjectReference Include="..\OpenAlprApi\OpenAlprApi.csproj" />
   </ItemGroup>
 
 </Project>
