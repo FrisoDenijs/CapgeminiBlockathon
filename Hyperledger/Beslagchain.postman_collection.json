@@ -1,0 +1,255 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Beslagchain",
+		"_postman_id": "6eaaf8a5-d49c-a7f1-3f81-0535a364c1f4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Voeg agent toe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"agent_id\", data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{base_url}}/Api/Agent",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.Agent\",\n  \"id\": \"{{$timestamp}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "2. Start Dosier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"dosier_id\", data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{base_url}}/Api/Dosier",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.Dosier\",\n  \"id\": \"{{$timestamp}}\",\n  \"beginDatum\": \"2017-09-23T07:24:01.974Z\",\n  \"agent\": \"{{agent_id}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "3. Voeg Beslagene Toe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"beslagene_id\", data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{base_url}}/Api/Beslagene",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.Beslagene\",\n  \"id\": \"{{$timestamp}}\",\n  \"naam\": \"Henk\",\n  \"telefoon\": \"0612345678\",\n  \"dosier\": \"{{dosier_id}}\"\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "4. Neem Auto In Beslag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auto_id\", data[\"id\"]);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{base_url}}/Api/NeemAutoInBeslag",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.NeemAutoInBeslag\",\n  \"id\": \"{{$timestamp}}\",\n  \"reden\": \"Drugs\",\n  \"omschrijving\": \"Blauwe Aston Martin\",\n  \"fotoUrls\": [\"http://cdntb.astonmartin.com/sitefinity/Vanquish%202014/bluethumb.jpg\"],\n  \"Status\": \"IN_BESLAG\",\n  \"beslagene\": \"{{beslagene_id}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "5. Voeg Gegevens Auto Toe",
+			"request": {
+				"url": "{{base_url}}/Api/VoegGegevensAutoToe",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.VoegGegevensAutoToe\",\n  \"kenteken\": \"ABC12D\",\n  \"nieuwWaarde\": 10000,\n  \"auto\": \"{{auto_id}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Agenten",
+			"request": {
+				"url": "{{base_url}}/Api/Agent",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Autos",
+			"request": {
+				"url": "{{base_url}}/Api/Auto",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dosiers",
+			"request": {
+				"url": "{{base_url}}Api/Dosier",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Beslagenen",
+			"request": {
+				"url": "{{base_url}}/Api/Beslagene",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get TX - Neem Auto In Beslag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auto_id\", data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{base_url}}/Api/NeemAutoInBeslag",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.NeemAutoInBeslag\",\n  \"id\": \"{{$timestamp}}\",\n  \"reden\": \"Drugs\",\n  \"omschrijving\": \"Blauwe Aston Martin\",\n  \"fotoUrls\": [\"http://cdntb.astonmartin.com/sitefinity/Vanquish%202014/bluethumb.jpg\"],\n  \"Status\": \"IN_BESLAG\",\n  \"beslagene\": \"{{beslagene_id}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get TX - Voeg Gegevens Auto Toe",
+			"request": {
+				"url": "{{base_url}}/Api/VoegGegevensAutoToe",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"$class\": \"org.cap.beslag.VoegGegevensAutoToe\",\n  \"kenteken\": \"ABC12D\",\n  \"nieuwWaarde\": 10000,\n  \"auto\": \"{{auto_id}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
